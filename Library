@@ -19,6 +19,28 @@ end)
 
 local CoreGui = (game:GetService("RunService"):IsStudio() and LocalPlayer.PlayerGui) or (gethui() or game:GetService("CoreGui"):Clone())
 
+function SomeoneHubLib:GetIcon(index)
+	if type(index) ~= "string" or index:find("rbxassetid://") or #index == 0 then
+		return index
+	end
+	
+	local firstMatch = nil
+	index = string.lower(index):gsub("lucide", ""):gsub("-", "")
+	
+	if self.Icons[index] then
+	  return self.Icons[index]
+	end
+	
+	for Name, Icon in self.Icons do
+		if Name == index then
+			return Icon
+		elseif not firstMatch and Name:find(index, 1, true) then
+			firstMatch = Icon
+		end
+	end
+	
+	return firstMatch or index
+end
 local function MakeDraggable(topbarobject, object)
 	local function CustomPos(topbarobject, object)
 		local Dragging = nil
