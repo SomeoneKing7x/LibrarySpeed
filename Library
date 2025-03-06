@@ -19,7 +19,7 @@ end)
 
 local CoreGui = (game:GetService("RunService"):IsStudio() and LocalPlayer.PlayerGui) or (gethui() or game:GetService("CoreGui"):Clone())
 
-function SomeoneHubLib:GetIcon(index)
+--[[function SomeoneHubLib:GetIcon(index)
 	if type(index) ~= "string" or index:find("rbxassetid://") or #index == 0 then
 		return index
 	end
@@ -40,7 +40,7 @@ function SomeoneHubLib:GetIcon(index)
 	end
 	
 	return firstMatch or index
-end
+end]]--
 local function MakeDraggable(topbarobject, object)
 	local function CustomPos(topbarobject, object)
 		local Dragging = nil
